@@ -18,7 +18,9 @@ namespace GameGrigorjev
         PictureBox pctBox, pctBox2;
         RadioButton rdBut, rdBut2,rdBut3;
         Button btn;
-
+        Label lbl1,lbl2;
+       
+        
 
 
 
@@ -33,12 +35,16 @@ namespace GameGrigorjev
             tree.Dock = DockStyle.Left;
             tree.AfterSelect += Tree_AfterSelect;
             TreeNode tn = new TreeNode("KamenNozBumaga");
+            MessageBox.Show("Palun minu sõber tee esimene lahti\n\n                    Settings              \n");
             tn.Nodes.Add(new TreeNode("Game"));
+            
             tn.Nodes.Add(new TreeNode("Settings"));
 
+            tn.Nodes.Add(new TreeNode("Mängu reeglid"));
 
 
-          
+
+
 
 
             //PICTURES 
@@ -48,6 +54,9 @@ namespace GameGrigorjev
             //pctBox.DoubleClick += PctBox_DoubleClick;
             pctBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pctBox.Image = Image.FromFile(@"..\..\Images\player1.png");
+            
+
+
 
             pctBox2 = new PictureBox();
             pctBox2.Size = new Size(120, 110);
@@ -69,6 +78,10 @@ namespace GameGrigorjev
         {
             if (e.Node.Text == "Game")
             {
+
+
+                MessageBox.Show("Tere, sõber see on mäng kivi-paber-käärid");
+
                 this.Controls.Add(pctBox);
                 this.Controls.Add(pctBox2);
                 rdBut.Visible = false;
@@ -113,6 +126,23 @@ namespace GameGrigorjev
 
 
             }
+            else if (e.Node.Text == "Mängu reeglid")
+            {
+                lbl1 = new Label();
+                lbl1.Text = "Botiga mängimine 1.Valite kolme pildi vahel, ühe pildi, samal ajal kui võitlete juhusliku pildi viskava robotiga.";
+                
+                lbl1.Size = new Size(600, 30);
+                lbl1.Location = new Point(150, 150);
+
+                lbl2 = new Label();
+                lbl2.Text = "Mängige seltsimehe / sõbra / või vaenlase vastu.Kivist paberikääride standardreeglid.";
+                lbl2.Size = new Size(600, 30);
+                lbl2.Location = new Point(150, 200);
+
+                this.Controls.Add(lbl1);
+                this.Controls.Add(lbl2);
+            }
+
         }
 
         private void rdBut_Checked(object sender, EventArgs e)
@@ -134,6 +164,7 @@ namespace GameGrigorjev
                 this.BackgroundImage = null;
 
 
-        }   }
-    }   
+            }
+        }
+    }
 }
